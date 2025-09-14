@@ -3,643 +3,256 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rahza Store - Top Up Game & E-Wallet</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Special For Keysha</title>
     <style>
-        :root {
-            --primary: #6a11cb;
-            --secondary: #2575fc;
-            --accent: #ff4d94;
-            --light: #ffffff;
-            --dark: #1a1a2e;
-            --success: #38ef7d;
-            --card-bg: rgba(255, 255, 255, 0.08);
-            --text-secondary: #b0b0d0;
-        }
-        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        
+
         body {
-            background: linear-gradient(135deg, var(--dark) 0%, #16213e 100%);
-            color: var(--light);
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
             min-height: 100vh;
-            padding-bottom: 2rem;
-            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
         }
-        
+
         .container {
             max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1.5rem;
-        }
-        
-        /* Header Styles */
-        header {
-            background: rgba(26, 26, 46, 0.9);
-            backdrop-filter: blur(10px);
-            padding: 1.2rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-        }
-        
-        .logo-icon {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-        }
-        
-        .logo-text {
-            font-size: 1.8rem;
-            font-weight: 700;
-            background: linear-gradient(to right, var(--accent), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
-        /* Hero Section */
-        .hero {
+            width: 100%;
             text-align: center;
-            padding: 5rem 0 3rem;
-            position: relative;
         }
-        
-        .hero-bg {
-            position: absolute;
+
+        header {
+            margin-bottom: 3rem;
+            animation: fadeIn 1s ease-out;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            color: #6c5ce7;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #636e72;
+            margin-bottom: 2rem;
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .photo-item {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            background: white;
+        }
+
+        .photo-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .photo-img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .photo-item:hover .photo-img {
+            transform: scale(1.05);
+        }
+
+        .photo-caption {
+            padding: 1.2rem;
+            font-size: 1.1rem;
+            color: #2d3436;
+            background: white;
+        }
+
+        .modal {
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            opacity: 0.15;
-            z-index: -1;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100" opacity="0.05"><circle cx="50" cy="50" r="40" stroke="%236a11cb" stroke-width="2" fill="none" /><circle cx="20" cy="20" r="15" stroke="%232575fc" stroke-width="1" fill="none" /><circle cx="80" cy="80" r="10" stroke="%23ff4d94" stroke-width="1" fill="none" /></svg>');
-        }
-        
-        .hero h1 {
-            font-size: 3.2rem;
-            margin-bottom: 1rem;
-            background: linear-gradient(to right, var(--accent), var(--secondary), var(--primary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: gradientShift 5s ease infinite;
-            background-size: 300% 300%;
-        }
-        
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto 2rem;
-            color: var(--text-secondary);
-            line-height: 1.6;
-        }
-        
-        /* Categories */
-        .categories {
+            background: rgba(0, 0, 0, 0.8);
             display: flex;
             justify-content: center;
-            gap: 1.2rem;
-            margin-bottom: 3rem;
-            flex-wrap: wrap;
-        }
-        
-        .category-btn {
-            background: rgba(255, 255, 255, 0.07);
-            border: none;
-            padding: 0.9rem 1.8rem;
-            border-radius: 50px;
-            color: var(--light);
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            display: flex;
             align-items: center;
-            gap: 0.5rem;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        
-        .category-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-            background: rgba(255, 255, 255, 0.12);
-        }
-        
-        .category-btn.active {
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            box-shadow: 0 5px 15px rgba(106, 17, 203, 0.4);
-        }
-        
-        /* Products Grid */
-        .products {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-        
-        .product-card {
-            background: var(--card-bg);
-            border-radius: 20px;
-            overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            position: relative;
             opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 0.6s forwards;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
         }
-        
-        @keyframes fadeInUp {
+
+        .modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            text-align: center;
+            max-width: 450px;
+            width: 90%;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal.active .modal-content {
+            transform: scale(1);
+        }
+
+        .modal-title {
+            font-size: 1.8rem;
+            color: #6c5ce7;
+            margin-bottom: 1.5rem;
+        }
+
+        .password {
+            font-size: 1.5rem;
+            font-weight: bold;
+            padding: 1.2rem;
+            background: #f8efba;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            color: #2d3436;
+            letter-spacing: 1px;
+        }
+
+        .close-btn {
+            background: #6c5ce7;
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .close-btn:hover {
+            background: #5649c9;
+        }
+
+        footer {
+            margin-top: auto;
+            padding: 1.5rem;
+            color: #636e72;
+            font-size: 0.9rem;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
-        
-        .product-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-            border-color: rgba(106, 17, 203, 0.3);
-        }
-        
-        .product-image {
-            height: 180px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .product-image::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(to bottom right, rgba(255,255,255,0.2), rgba(255,255,255,0));
-            transform: rotate(30deg);
-        }
-        
-        .product-image i {
-            font-size: 4.5rem;
-            color: white;
-            opacity: 0.9;
-            z-index: 2;
-            filter: drop-shadow(0 5px 10px rgba(0,0,0,0.3));
-        }
-        
-        .product-content {
-            padding: 1.8rem;
-        }
-        
-        .product-title {
-            font-size: 1.4rem;
-            margin-bottom: 0.7rem;
-            font-weight: 600;
-            color: var(--light);
-        }
-        
-        .product-price {
-            color: var(--success);
-            font-size: 1.6rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            display: block;
-        }
-        
-        .product-description {
-            color: var(--text-secondary);
-            margin-bottom: 1.8rem;
-            font-size: 0.95rem;
-            line-height: 1.5;
-        }
-        
-        .btn-buy {
-            width: 100%;
-            padding: 1rem;
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            border: none;
-            border-radius: 12px;
-            color: white;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-        }
-        
-        .btn-buy:hover {
-            background: linear-gradient(to right, var(--secondary), var(--primary));
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(106, 17, 203, 0.4);
-        }
-        
-        /* Contact Section */
-        .contact-section {
-            margin-top: 6rem;
-            text-align: center;
-            padding: 3rem 2rem;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 25px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        
-        .contact-section h2 {
-            font-size: 2.2rem;
-            margin-bottom: 2.5rem;
-            color: var(--light);
-            font-weight: 700;
-        }
-        
-        .contact-cards {
-            display: flex;
-            justify-content: center;
-            gap: 2.5rem;
-            flex-wrap: wrap;
-        }
-        
-        .contact-card {
-            background: rgba(26, 26, 46, 0.7);
-            padding: 2rem;
-            border-radius: 18px;
-            width: 300px;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.07);
-        }
-        
-        .contact-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-            border-color: rgba(106, 17, 203, 0.3);
-        }
-        
-        .contact-icon {
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1.5rem;
-            font-size: 2rem;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-        }
-        
-        .contact-card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 1rem;
-            color: var(--light);
-        }
-        
-        .contact-info {
-            color: var(--text-secondary);
-            font-size: 1.2rem;
-            word-break: break-all;
-            font-weight: 500;
-        }
-        
-        /* Footer */
-        footer {
-            text-align: center;
-            margin-top: 5rem;
-            padding: 2.5rem;
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        
-        /* Notification */
-        .notification {
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            color: white;
-            padding: 1.2rem 2rem;
-            border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-            transform: translateX(100px);
-            opacity: 0;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-        }
-        
-        .notification.show {
-            transform: translateX(0);
-            opacity: 1;
-        }
-        
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .products {
-                grid-template-columns: 1fr;
-            }
-            
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .categories {
+
+        /* Responsiveness */
+        @media (max-width: 900px) {
+            .gallery {
                 flex-direction: column;
                 align-items: center;
             }
             
-            .category-btn {
-                width: 250px;
-                justify-content: center;
+            .photo-item {
+                max-width: 100%;
             }
             
-            .contact-cards {
-                flex-direction: column;
-                align-items: center;
+            h1 {
+                font-size: 2.2rem;
             }
         }
-        
-        /* Animation delays for product cards */
-        .product-card:nth-child(1) { animation-delay: 0.1s; }
-        .product-card:nth-child(2) { animation-delay: 0.2s; }
-        .product-card:nth-child(3) { animation-delay: 0.3s; }
-        .product-card:nth-child(4) { animation-delay: 0.4s; }
-        .product-card:nth-child(5) { animation-delay: 0.5s; }
-        .product-card:nth-child(6) { animation-delay: 0.6s; }
     </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <div class="header-content">
-                <div class="logo">
-                    <div class="logo-icon">
-                        <i class="fas fa-store"></i>
-                    </div>
-                    <div class="logo-text">RAHZA STORE</div>
-                </div>
+    <div class="container">
+        <header>
+            <h1>Special For Keysha</h1>
+            <p class="subtitle">Pilih salah satu foto untuk melihat pesan spesial</p>
+        </header>
+
+        <div class="gallery">
+            <div class="photo-item" data-password="KEYSHACANTIK">
+                <img src="https://via.placeholder.com/400x280/6c5ce7/ffffff?text=Foto+Spesial+1" alt="Foto Spesial 1" class="photo-img">
+                <div class="photo-caption">Foto Spesial 1</div>
+            </div>
+            
+            <div class="photo-item" data-password="KEYSHAACU">
+                <img src="https://via.placeholder.com/400x280/fdcb6e/2d3436?text=Foto+Spesial+2" alt="Foto Spesial 2" class="photo-img">
+                <div class="photo-caption">Foto Spesial 2</div>
             </div>
         </div>
-    </header>
-
-    <main class="container">
-        <section class="hero">
-            <div class="hero-bg"></div>
-            <h1>TOP UP GAME & E-WALLET</h1>
-            <p>Layanan top up game dan e-wallet terpercaya dengan proses cepat dan harga terjangkau. Transaksi aman dan garansi 100%.</p>
-            
-            <div class="categories">
-                <button class="category-btn active" data-category="all">
-                    <i class="fas fa-th"></i> Semua
-                </button>
-                <button class="category-btn" data-category="mobile-legends">
-                    <i class="fas fa-crown"></i> Mobile Legends
-                </button>
-                <button class="category-btn" data-category="free-fire">
-                    <i class="fas fa-fire"></i> Free Fire
-                </button>
-                <button class="category-btn" data-category="e-wallet">
-                    <i class="fas fa-wallet"></i> E-Wallet
-                </button>
-            </div>
-        </section>
-
-        <section class="products">
-            <!-- Mobile Legends Products -->
-            <div class="product-card" data-category="mobile-legends">
-                <div class="product-image">
-                    <i class="fas fa-gem"></i>
-                </div>
-                <div class="product-content">
-                    <h3 class="product-title">Mobile Legends</h3>
-                    <span class="product-price">Rp 3.000</span>
-                    <p class="product-description">10 Diamond Mobile Legends. Proses instan dan garansi 100%.</p>
-                    <button class="btn-buy">
-                        <i class="fas fa-shopping-cart"></i> Beli Sekarang
-                    </button>
-                </div>
-            </div>
-
-            <div class="product-card" data-category="mobile-legends">
-                <div class="product-image">
-                    <i class="fas fa-gem"></i>
-                </div>
-                <div class="product-content">
-                    <h3 class="product-title">Mobile Legends</h3>
-                    <span class="product-price">Rp 10.000</span>
-                    <p class="product-description">20 Diamond Mobile Legends. Proses instan dan garansi 100%.</p>
-                    <button class="btn-buy">
-                        <i class="fas fa-shopping-cart"></i> Beli Sekarang
-                    </button>
-                </div>
-            </div>
-
-            <!-- Free Fire Products -->
-            <div class="product-card" data-category="free-fire">
-                <div class="product-image">
-                    <i class="fas fa-fire"></i>
-                </div>
-                <div class="product-content">
-                    <h3 class="product-title">Free Fire</h3>
-                    <span class="product-price">Rp 3.000</span>
-                    <p class="product-description">10 Diamond Free Fire. Proses instan dan garansi 100%.</p>
-                    <button class="btn-buy">
-                        <i class="fas fa-shopping-cart"></i> Beli Sekarang
-                    </button>
-                </div>
-            </div>
-
-            <div class="product-card" data-category="free-fire">
-                <div class="product-image">
-                    <i class="fas fa-fire"></i>
-                </div>
-                <div class="product-content">
-                    <h3 class="product-title">Free Fire</h3>
-                    <span class="product-price">Rp 10.000</span>
-                    <p class="product-description">20 Diamond Free Fire. Proses instan dan garansi 100%.</p>
-                    <button class="btn-buy">
-                        <i class="fas fa-shopping-cart"></i> Beli Sekarang
-                    </button>
-                </div>
-            </div>
-
-            <!-- E-Wallet Products -->
-            <div class="product-card" data-category="e-wallet">
-                <div class="product-image">
-                    <i class="fas fa-money-bill-wave"></i>
-                </div>
-                <div class="product-content">
-                    <h3 class="product-title">DANA</h3>
-                    <span class="product-price">Isi Saldo DANA</span>
-                    <p class="product-description">Transfer saldo DANA dengan proses cepat dan aman.</p>
-                    <button class="btn-buy">
-                        <i class="fas fa-shopping-cart"></i> Beli Sekarang
-                    </button>
-                </div>
-            </div>
-
-            <div class="product-card" data-category="e-wallet">
-                <div class="product-image">
-                    <i class="fas fa-money-bill-wave"></i>
-                </div>
-                <div class="product-content">
-                    <h3 class="product-title">GOPAY</h3>
-                    <span class="product-price">Isi Saldo GOPAY</span>
-                    <p class="product-description">Transfer saldo GOPAY dengan proses cepat dan aman.</p>
-                    <button class="btn-buy">
-                        <i class="fas fa-shopping-cart"></i> Beli Sekarang
-                    </button>
-                </div>
-            </div>
-
-            <div class="product-card" data-category="e-wallet">
-                <div class="product-image">
-                    <i class="fas fa-money-bill-wave"></i>
-                </div>
-                <div class="product-content">
-                    <h3 class="product-title">OVO</h3>
-                    <span class="product-price">Isi Saldo OVO</span>
-                    <p class="product-description">Transfer saldo OVO dengan proses cepat dan aman.</p>
-                    <button class="btn-buy">
-                        <i class="fas fa-shopping-cart"></i> Beli Sekarang
-                    </button>
-                </div>
-            </div>
-        </section>
-
-        <section class="contact-section">
-            <h2>Hubungi Kami</h2>
-            <div class="contact-cards">
-                <div class="contact-card">
-                    <div class="contact-icon">
-                        <i class="fab fa-whatsapp"></i>
-                    </div>
-                    <h3>DANA</h3>
-                    <p class="contact-info">085693449956</p>
-                </div>
-                <div class="contact-card">
-                    <div class="contact-icon">
-                        <i class="fab fa-whatsapp"></i>
-                    </div>
-                    <h3>GOPAY</h3>
-                    <p class="contact-info">081413059313</p>
-                </div>
-                <div class="contact-card">
-                    <div class="contact-icon">
-                        <i class="fab fa-whatsapp"></i>
-                    </div>
-                    <h3>OVO</h3>
-                    <p class="contact-info">081413059313</p>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <p>&copy; 2023 Rahza Store - Layanan Top Up Game & E-Wallet Terpercaya</p>
-    </footer>
-
-    <div class="notification" id="notification">
-        <i class="fas fa-check-circle"></i>
-        <span>Produk berhasil ditambahkan ke keranjang!</span>
     </div>
 
+    <div class="modal">
+        <div class="modal-content">
+            <h2 class="modal-title">Pesan Spesial</h2>
+            <p>Ini adalah password khusus untukmu:</p>
+            <div class="password" id="password-display"></div>
+            <button class="close-btn">Tutup</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>Dibuat dengan ❤️ khusus untuk Keysha</p>
+    </footer>
+
     <script>
-        // Category Filter
-        const categoryButtons = document.querySelectorAll('.category-btn');
-        const productCards = document.querySelectorAll('.product-card');
-        
-        categoryButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const category = button.getAttribute('data-category');
-                
-                // Update active button
-                categoryButtons.forEach(btn => btn.classList.remove('active'));
-                button.classList.add('active');
-                
-                // Filter products
-                productCards.forEach(card => {
-                    if (category === 'all' || card.getAttribute('data-category') === category) {
-                        card.style.display = 'block';
-                    } else {
-                        card.style.display = 'none';
-                    }
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.querySelector('.modal');
+            const passwordDisplay = document.getElementById('password-display');
+            const closeBtn = document.querySelector('.close-btn');
+            const photoItems = document.querySelectorAll('.photo-item');
+            
+            // Tambahkan event listener untuk setiap item foto
+            photoItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const password = this.getAttribute('data-password');
+                    passwordDisplay.textContent = password;
+                    modal.classList.add('active');
                 });
             });
-        });
-
-        // Buy Button Effect
-        const buyButtons = document.querySelectorAll('.btn-buy');
-        const notification = document.getElementById('notification');
-        
-        buyButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                // Show notification
-                notification.classList.add('show');
-                
-                // Hide notification after 3 seconds
-                setTimeout(() => {
-                    notification.classList.remove('show');
-                }, 3000);
+            
+            // Tutup modal ketika tombol close diklik
+            closeBtn.addEventListener('click', function() {
+                modal.classList.remove('active');
             });
-        });
-
-        // Animate elements on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.animation = 'fadeInUp 0.6s forwards';
-                    observer.unobserve(entry.target);
+            
+            // Tutup modal ketika mengklik di luar modal
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
                 }
             });
-        }, observerOptions);
-
-        // Observe product cards for animation
-        productCards.forEach(card => {
-            observer.observe(card);
         });
     </script>
 </body>
-</html>https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css
+</html>
